@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+
+import React from 'react';
+import { useTodos } from './hooks/useTodos';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+import Filters from './components/Filters';
+
+const App: React.FC = () => {
+  const {
+    todos,
+    activeCount,
+    filter,
+    setFilter,
+    addTodo,
+    toggleTodo,
+    removeTodo,
+    editTodoText,
+  } = useTodos();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="todo-app">
+      <h1>Список Задач</h1>
+      <TodoForm onAdd={addTodo} />
 
-export default App
+      <p>Осталось **{activeCount}** активных задач</p>
+
+      <Filters currentFilter={filter} onFilterChange={setFilter} />
+
+      <TodoList
+        todos={todos}
+        onToggle={toggleTodo}
+        onRemove={removeTodo}
+        onEdit={editTodoText}
+      />
+    </div>
+  );
+};
+
+export default App;
