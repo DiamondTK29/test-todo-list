@@ -1,42 +1,205 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.todo-app {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+    text-align: center;
+    color: #1877f2;
+    margin-bottom: 25px;
+    font-size: 28px;
+    font-weight: 600;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+.todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.card {
-  padding: 2em;
+.todo-form input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+    background-color: white;
+    color: #333;
 }
 
-.read-the-docs {
-  color: #888;
+.todo-form input[type="text"]:focus {
+    border-color: #1877f2;
+    outline: none;
+}
+
+.todo-form button {
+    padding: 12px 20px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.todo-form button:hover:not(:disabled) {
+    background-color: #166fe5;
+}
+
+.todo-form button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
+.todo-app > p {
+    text-align: center;
+    color: #606770;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 10px;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+}
+
+.todo-item input[type="checkbox"]:checked {
+    background-color: #1877f2;
+    border-color: #1877f2;
+}
+
+.todo-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.todo-item span {
+    flex-grow: 1;
+    font-size: 16px;
+    cursor: default;
+    word-break: break-word;
+    color: #333;
+}
+
+
+.todo-item.completed span {
+    text-decoration: line-through;
+    color: #000000;
+}
+
+
+.todo-item input[type="text"] {
+    flex-grow: 1;
+    padding: 4px 6px;
+    font-size: 16px;
+    border: 1px dashed #1877f2;
+    border-radius: 3px;
+    outline: none;
+}
+
+
+.todo-item button {
+    background: none;
+    border: none;
+    color: #8a8a8a;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.todo-item button:hover {
+    color: #333;
+}
+
+.todo-item button:last-child {
+    color: #dc3545;
+    font-size: 16px;
+}
+.todo-item button:last-child:hover {
+    color: #c82333;
+}
+
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.filters button {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    color: #444;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.filters button:hover {
+    background-color: #e0e0e0;
+}
+
+.filters button.active {
+    background-color: #1877f2;
+    color: white;
+    border-color: #1877f2;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(24, 119, 242, 0.3);
 }
